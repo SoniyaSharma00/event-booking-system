@@ -141,6 +141,11 @@ public class BookingController {
     @FXML
     private void goToHome() throws IOException {
             App.setRoot("home");
-        }
+    }
+
+    @FXML
+    private void manageEvents() throws IOException {
+            App.setRoot("events");
+    }
 
 }

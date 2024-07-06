@@ -17,6 +17,7 @@
    <VBox spacing="10">
        <HBox spacing="10" alignment="CENTER">
            <Button text="View All Available Events" onAction="#goToHome"/>
+           <Button text="Manage Events" onAction="#manageEvents"/>
        </HBox>
        <HBox spacing="10" alignment="CENTER">
            <Label text="All Bookings"/>

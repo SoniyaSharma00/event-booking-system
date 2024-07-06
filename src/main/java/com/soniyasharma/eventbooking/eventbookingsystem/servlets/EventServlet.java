@@ -47,4 +47,36 @@ public class EventServlet extends HttpServlet {
             DB.closeConnection(connection);
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String location = request.getParameter("location");
+        String  date = request.getParameter("date");
+        PrintWriter out = response.getWriter();
+        Connection connection = null;
+        try{
+            connection = DB.getConnection();
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO events(name,location,date) VALUES(?,?,?)");
+            statement.setString(1, name);
+            statement.setString(2, location);
+            statement.setString(3, date);
+
+            int insertData = statement.executeUpdate();
+            if (insertData == 1) {
+                out.println("event_added_successfully");
+            } else {
+                out.println("error_while_adding_event");
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+
+        }catch (Exception e){
+
+            e.printStackTrace();
+
+        }finally {
+            DB.closeConnection(connection);
+        }
+    }
 }
