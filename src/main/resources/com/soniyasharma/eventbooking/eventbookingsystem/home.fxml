@@ -17,7 +17,7 @@
         <columns>
             <TableColumn fx:id="nameColumn" text="Event Name" prefWidth="200.0"/>
             <TableColumn fx:id="locationColumn" text="Event Location" prefWidth="250.0"/>
-            <TableColumn fx:id="dateTimeColumn" text="Event Date and Time" prefWidth="200.0"/>
+            <TableColumn fx:id="dateColumn" text="Event Date and Time" prefWidth="200.0"/>
         </columns>
     </TableView>
 

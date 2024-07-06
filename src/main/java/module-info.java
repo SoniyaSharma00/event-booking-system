@@ -3,6 +3,8 @@ module com.soniyasharma.eventbooking.eventbookingsystem {
     requires javafx.fxml;
     requires javafx.base;
     requires jakarta.servlet;
+    requires java.sql;
+    requires org.json;
 
     opens com.soniyasharma.eventbooking.eventbookingsystem to javafx.fxml;
     exports com.soniyasharma.eventbooking.eventbookingsystem;

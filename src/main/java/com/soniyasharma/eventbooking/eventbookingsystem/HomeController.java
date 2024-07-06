@@ -1,5 +1,6 @@
 package com.soniyasharma.eventbooking.eventbookingsystem;
 
+import com.soniyasharma.eventbooking.eventbookingsystem.classes.API;
 import com.soniyasharma.eventbooking.eventbookingsystem.classes.Event;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,9 +12,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeController {
 
@@ -27,24 +32,41 @@ public class HomeController {
     private TableColumn<Event, String> locationColumn;
 
     @FXML
-    private TableColumn<Event, LocalDateTime> dateTimeColumn;
+    private TableColumn<Event, String > dateColumn;
 
-    private ObservableList<Event> eventList = FXCollections.observableArrayList();
+    private final ObservableList<Event> allEvents = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
         // Initialize the columns
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         locationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
-        dateTimeColumn.setCellValueFactory(new PropertyValueFactory<>("dateTime"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        // Add sample data
-        eventList.add(new Event("Concert", "City Hall", LocalDateTime.of(2024, 7, 10, 19, 30)));
-        eventList.add(new Event("Conference", "Tech Center", LocalDateTime.of(2024, 8, 20, 9, 0)));
-        eventList.add(new Event("Workshop", "Community Center", LocalDateTime.of(2024, 9, 15, 14, 0)));
-
+        getAllEvents();
         // Set the data to the table
-        eventTable.setItems(eventList);
+        eventTable.setItems(allEvents);
+    }
+
+    private void getAllEvents()
+    {
+        try {
+            String getEventFromApi = API.get("http://localhost:8080/eventbookingsystem/events");
+            JSONArray jsonArray = new JSONArray(getEventFromApi);
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                Event event = new Event(
+                        jsonObject.getInt("id"),
+                        jsonObject.getString("name"),
+                        jsonObject.getString("location"),
+                        jsonObject.getString("date")
+                );
+                allEvents.add(event);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -63,4 +85,6 @@ public class HomeController {
             stage.show();
         }
     }
+
+
 }

@@ -1,16 +1,26 @@
 package com.soniyasharma.eventbooking.eventbookingsystem.classes;
 
-import java.time.LocalDateTime;
 
 public class Event {
+
+    private int id;
     private String name;
     private String location;
-    private LocalDateTime dateTime;
+    private String date;
 
-    public Event(String name, String location, LocalDateTime dateTime) {
+    public Event(int id,String name, String location, String date) {
+        this.id = id;
         this.name = name;
         this.location = location;
-        this.dateTime = dateTime;
+        this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -29,11 +39,11 @@ public class Event {
         this.location = location;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public String getDate() {
+        return date;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(String dateTime) {
+        this.date = dateTime;
     }
 }
