@@ -7,12 +7,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.layout.HBox?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.soniyasharma.eventbooking.eventbookingsystem.HomeController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
+   <VBox spacing="10">
+       <HBox spacing="10" alignment="CENTER">
+           <Button text="View All Bookings" onAction="#goToBookings"/>
+       </HBox>
+       <HBox spacing="10" alignment="CENTER">
+           <Label text="All Events"/>
+       </HBox>
+   </VBox>
     <TableView fx:id="eventTable" prefWidth="600.0" prefHeight="400.0">
         <columns>
             <TableColumn fx:id="nameColumn" text="Event Name" prefWidth="200.0"/>

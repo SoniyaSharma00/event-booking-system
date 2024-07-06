@@ -1,5 +1,6 @@
 package com.soniyasharma.eventbooking.eventbookingsystem;
 
+import com.soniyasharma.eventbooking.eventbookingsystem.BookingFormController;
 import com.soniyasharma.eventbooking.eventbookingsystem.classes.API;
 import com.soniyasharma.eventbooking.eventbookingsystem.classes.Event;
 import javafx.collections.FXCollections;
@@ -32,7 +33,7 @@ public class HomeController {
     private TableColumn<Event, String> locationColumn;
 
     @FXML
-    private TableColumn<Event, String > dateColumn;
+    private TableColumn<Event, String> dateColumn;
 
     private final ObservableList<Event> allEvents = FXCollections.observableArrayList();
 
@@ -48,8 +49,7 @@ public class HomeController {
         eventTable.setItems(allEvents);
     }
 
-    private void getAllEvents()
-    {
+    private void getAllEvents() {
         try {
             String getEventFromApi = API.get("http://localhost:8080/eventbookingsystem/events");
             JSONArray jsonArray = new JSONArray(getEventFromApi);
@@ -86,5 +86,9 @@ public class HomeController {
         }
     }
 
+    @FXML
+    private void goToBookings() throws IOException {
+       App.setRoot("bookings");
+    }
 
 }

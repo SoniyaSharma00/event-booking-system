@@ -38,7 +38,7 @@ public class BookingFormController {
         try{
             String data = "name=" + name+ "&contact_no="+contact + "&reservations="+ reservations+ "&eventId="+ eventId;
 
-            String response = API.post("http://localhost:8080/eventbookingsystem/events/booking",data);
+            String response = API.post("http://localhost:8080/eventbookingsystem/events/booking",data,"POST");
             if(response.equals("event_booking_successful")){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Book Event");

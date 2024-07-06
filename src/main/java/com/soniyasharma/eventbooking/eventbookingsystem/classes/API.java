@@ -29,11 +29,11 @@ public class API {
         }
     }
 
-    public static String post(String url, String data) throws Exception{
+    public static String post(String url, String data, String method) throws Exception{
         URL productUrl = new URL(url);
 
         HttpURLConnection connection = (HttpURLConnection) productUrl.openConnection();
-        connection.setRequestMethod("POST");
+        connection.setRequestMethod(method);
         connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
         connection.setDoOutput(true);
 
