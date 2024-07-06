@@ -21,6 +21,6 @@
         </columns>
     </TableView>
 
-    <Button fx:id="bookButton" text="Book" onAction="#handleBookButtonAction"/>
+    <Button fx:id="bookButton" text="Book Event" onAction="#handleBookButtonAction"/>
 
 </VBox>

@@ -12,4 +12,12 @@
         <servlet-name>EventServlet</servlet-name>
         <url-pattern>/events</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>EventBookingServlet</servlet-name>
+        <servlet-class>com.soniyasharma.eventbooking.eventbookingsystem.servlets.EventBookingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EventBookingServlet</servlet-name>
+        <url-pattern>/events/booking</url-pattern>
+    </servlet-mapping>
 </web-app>

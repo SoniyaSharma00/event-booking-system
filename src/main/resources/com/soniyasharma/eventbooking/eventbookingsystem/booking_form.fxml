@@ -22,4 +22,5 @@
     <TextField fx:id="reservationsField"/>
 
     <Button text="Submit" onAction="#handleSubmitButtonAction"/>
+    <Label fx:id="responseLabel"/>
 </VBox>
